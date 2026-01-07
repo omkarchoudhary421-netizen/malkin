@@ -28,7 +28,7 @@ body{
   text-align:center;
   padding:20px;
   opacity:0;
-  transform:scale(0.96);
+  transform:scale(0.97);
   transition:0.6s ease;
 }
 
@@ -39,17 +39,18 @@ body{
 
 .emoji{
   font-size:90px;
-  animation:pop 1.5s infinite alternate;
+  line-height:1;
 }
 
-@keyframes pop{
-  from{transform:scale(1)}
-  to{transform:scale(1.1)}
+.stickers{
+  font-size:26px;
+  margin-top:10px;
+  opacity:0.8;
 }
 
 .text{
   font-size:22px;
-  margin-top:20px;
+  margin-top:18px;
   color:#444;
   line-height:1.4;
 }
@@ -64,14 +65,18 @@ body{
 
 <body>
 
+<!-- Slide 1 -->
 <div class="slide active">
   <div class="emoji">🐱</div>
+  <div class="stickers">🐾 🐾</div>
   <div class="text">Hi… I came to see you</div>
   <div class="small">tap anywhere 🐾</div>
 </div>
 
+<!-- Slide 2 : Cat holding rose -->
 <div class="slide">
-  <div class="emoji">🐱🌹</div>
+  <div class="emoji">🐱🤲🌹</div>
+  <div class="stickers">😽 🐾 💕</div>
   <div class="text">
     This rose is for my malkin 🌹<br>
     from your joru ka gulam 🐱
@@ -79,25 +84,29 @@ body{
   <div class="small">bas dil se 🤍</div>
 </div>
 
+<!-- Slide 3 -->
 <div class="slide">
   <div class="emoji">🐱🧸</div>
+  <div class="stickers">🤍 🐾 🤍</div>
   <div class="text">And a teddy…</div>
-  <div class="small">for extra comfort 🤍</div>
+  <div class="small">for extra comfort</div>
 </div>
 
+<!-- Slide 4 -->
 <div class="slide">
   <div class="emoji">🐱💖</div>
+  <div class="stickers">🐾 💕 🐾</div>
   <div class="text">Hope this made you smile</div>
   <div class="small">that’s all 🫶</div>
 </div>
 
 <script>
-const slides=document.querySelectorAll(".slide");
-let index=0;
+const slides = document.querySelectorAll(".slide");
+let index = 0;
 
-document.body.addEventListener("click",()=>{
+document.body.addEventListener("click", () => {
   slides[index].classList.remove("active");
-  index=(index+1)%slides.length;
+  index = (index + 1) % slides.length;
   slides[index].classList.add("active");
 });
 </script>
