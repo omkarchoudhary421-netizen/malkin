@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Kitty 💕</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  background:linear-gradient(180deg,#ffd6e8,#e6d9ff);
+  min-height:100vh;
+  overflow-x:hidden;
+  color:#444;
+}
+
+/* Loading */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#ffd6e8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:999;
+}
+#loader span{
+  font-size:22px;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{opacity:.4}
+  50%{opacity:1}
+  100%{opacity:.4}
+}
+
+/* Hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp linear infinite;
+  opacity:.6;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-120vh);opacity:0}
+}
+
+.container{
+  max-width:420px;
+  margin:auto;
+  padding:20px;
+}
+
+.section{
+  margin:45px 0;
+  text-align:center;
+  animation:fadeIn 1.4s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{font-size:32px;color:#ff5c8a}
+.subtitle{font-size:15px;opacity:.85;margin-top:10px}
+
+.card{
+  background:#fff;
+  padding:18px;
+  border-radius:20px;
+  margin:15px 0;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.btn{
+  background:#ff5c8a;
+  color:#fff;
+  border:none;
+  padding:14px 24px;
+  border-radius:30px;
+  font-size:15px;
+  cursor:pointer;
+  margin:8px;
+  box-shadow:0 6px 15px rgba(255,92,138,.4);
+  transition:.3s;
+}
+.btn.alt{background:#a78bfa}
+.btn:hover{transform:scale(1.05)}
+
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:10;
+}
+.popup-content{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  width:80%;
+  max-width:300px;
+}
+
+/* Music */
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#fff;
+  border-radius:50%;
+  padding:12px;
+  box-shadow:0 6px 15px rgba(0,0,0,.2);
+  cursor:pointer;
+  z-index:5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <span>Loading something cute 💕</span>
+</div>
+
+<script>
+setTimeout(()=>{document.getElementById("loader").style.display="none"},2500)
+</script>
+
+<!-- Hearts -->
+<script>
+for(let i=0;i<20;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"%";
+  h.style.animationDuration=5+Math.random()*6+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="container">
+
+<!-- Welcome -->
+<div class="section">
+  <h1>Hey Kitty 💕</h1>
+  <p class="subtitle">This little space is just for you</p>
+</div>
+
+<!-- Cards -->
+<div class="section">
+  <div class="card">🐻 You make normal days feel special</div>
+  <div class="card">🌸 Your smile = instant mood boost</div>
+  <div class="card">☁️ Take your time, I’m not going anywhere</div>
+</div>
+
+<!-- Compliments -->
+<div class="section">
+  <div class="card">🌷 Sweet</div>
+  <div class="card">🧠 Smart</div>
+  <div class="card">🌙 Calm</div>
+  <div class="card">💫 Rare</div>
+</div>
+
+<!-- Interaction -->
+<div class="section">
+  <p class="subtitle">Did this make you smile? 😊</p>
+  <button class="btn" onclick="celebrate()">Yes 💖</button>
+  <button class="btn alt" onclick="showPopup('Still glad you came here 🌸')">No 🙈</button>
+</div>
+
+<!-- Share -->
+<div class="section">
+  <button class="btn" onclick="share()">Share the smile 💌</button>
+</div>
+
+<!-- Ending -->
+<div class="section">
+  <p class="subtitle">
+    No rush. No expectations.<br>
+    Just something cute to make you smile today 💕
+  </p>
+</div>
+
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <p id="popupText"></p><br>
+    <button class="btn" onclick="closePopup()">Okay 💕</button>
+  </div>
+</div>
+
+<!-- Music -->
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+
+<script>
+function showPopup(t){
+  popupText.innerText=t;
+  popup.style.display="flex";
+}
+function closePopup(){popup.style.display="none"}
+
+function celebrate(){
+  showPopup("Yayyy! 🎉 This made my day 💖");
+  for(let i=0;i<15;i++){
+    let s=document.createElement("div");
+    s.innerHTML="✨";
+    s.style.position="fixed";
+    s.style.left=Math.random()*100+"%";
+    s.style.top="50%";
+    s.style.fontSize="20px";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1500);
+  }
+}
+
+let playing=false;
+function toggleMusic(){
+  let m=document.getElementById("music");
+  playing?m.pause():m.play();
+  playing=!playing;
+}
+
+function share(){
+  let text="This made me smile 💕";
+  let url=window.location.href;
+  window.open(`https://wa.me/?text=${encodeURIComponent(text+" "+url)}`);
+}
+</script>
+
+</body>
+</html>
